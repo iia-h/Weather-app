@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8" />
+   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+   <link rel="stylesheet" href="src/styles.css" />
+   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+      integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous" />
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css" />
+   <link rel="preconnect" href="https://fonts.googleapis.com" />
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+   <link
+      href="https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&display=swap"
+      rel="stylesheet" />
+   <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+   <title>Weather app</title>
+</head>
+
+<body>
+   <div class="container-main d-flex flex-column">
+      <div class="top-item shadow-lg rounded-3 p-3 d-flex flex-row align-items-center justify-content-around">
+         <div>
+            <div class="degree d-flex flex-row align-items-baseline">
+               <div class="main-temp" id="temp">
+                  27
+               </div>
+               <span class="main-temp">°</span>
+               <div class="d-flex flex-row spacing">
+                  <a href="#" id="celsius" class="link">C</a>
+                  <span class="vertical-bar">|</span>
+                  <a href="#" id="fahrenheit" class="link">F</a>
+               </div>
+            </div>
+            <div id="weather-type">sunny</div>
+            <div class="conditions d-flex justify-content-between">
+               <div class="humidity">
+                  <span>humidity</span> <br>
+                  <span id="humidity">25%</span>
+               </div>
+               <div class="vertical-bar">|</div>
+               <div class="wind">
+                  <span>wind</span> <br>
+                  <span id="wind">2km/h</span>
+               </div>
+            </div>
+         </div>
+         <img src="images/sun.png" alt="sun" class="center-icon rot" />
+         <div>
+            <div class="main-city text-break" id="city">Dnipro</div>
+            <div class="date" id="date">July, 10</div>
+            <div class="week-day" id="day">Sun</div>
+         </div>
+      </div>
+      <div class="bottom-item shadow-lg rounded-3 px-4 py-2">
+         <div class="row">
+            <div class="col-2">
+               <div class="cities line-vertical">
+                  <div>Kyiv</div>
+                  <div>Paris</div>
+                  <div>Tokio</div>
+               </div>
+            </div>
+            <div class="col-10">
+               <div class="row text-center">
+                  <div class="col-2 pt-2 pb-2">
+                     <div class="day">MON</div>
+                     <div class="weather-icon">
+                        <img src="images/sun.png" class="icon" />
+                     </div>
+                     <div class="temp">30°</div>
+                  </div>
+                  <div class="col-2 pt-2 pb-2">
+                     <div class="day">TUE</div>
+                     <div class="weather-icon">
+                        <img src="images/cloudy_rain.png" class="icon" />
+                     </div>
+                     <div class="temp">24°</div>
+                  </div>
+                  <div class="col-2 pt-2 pb-2">
+                     <div class="day">WED</div>
+                     <div class="weather-icon">
+                        <img src="images/cloud_lightning_rain.png" class="icon" />
+                     </div>
+                     <div class="temp">23°</div>
+                  </div>
+                  <div class="col-2 pt-2 pb-2">
+                     <div class="day">THU</div>
+                     <div class="weather-icon">
+                        <img src="images/sun.png" class="icon" />
+                     </div>
+                     <div class="temp">28°</div>
+                  </div>
+                  <div class="col-2 pt-2 pb-2">
+                     <div class="day">FRI</div>
+                     <div class="weather-icon">
+                        <img src="images/cloudy_sun.png" class="icon" />
+                     </div>
+                     <div class="temp">25°</div>
+                  </div>
+                  <div class="col-2 pt-2 pb-2">
+                     <div class="day">SAT</div>
+                     <div class="weather-icon">
+                        <img src="images//sun.png" class="icon" />
+                     </div>
+                     <div class="temp">27°</div>
+                  </div>
+               </div>
+            </div>
+            <div class="col-12">
+               <form class="row" id="city-form">
+                  <div class="mb-3 col-8">
+                     <input type="text" placeholder="Enter a city" class="form-control" id="city-input" />
+                  </div>
+                  <div class="col-4">
+                     <button type="submit" id="search-btn" class="btn btn-outline-warning">
+                        Search
+                     </button>
+                     <button type="submit" id="current-btn" class="btn btn-outline-warning">
+                        Current
+                     </button>
+                  </div>
+               </form>
+            </div>
+         </div>
+      </div>
+      <div class="col-12 p-2 text-center bottom-item">
+         Open-source code by Iia Habaraieva
+      </div>
+   </div>
+
+   <script src="src/index.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,125 @@
+body {
+  background-image: url(https://s3.amazonaws.com/shecodesio-production/uploads/files/000/039/993/original/sky.jpg?1657454006);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center center;
+}
+
+/* Top Part */
+
+/* div {
+   border: 1px solid black;
+} */
+
+.container-main {
+  margin: 8% auto;
+  max-width: 45%;
+  font-family: "Titillium Web", sans-serif;
+}
+
+.top-item {
+  background-image: linear-gradient(
+    90deg,
+    #1e3249 0%,
+    #3e76be 45%,
+    rgb(236, 231, 231) 100%
+  );
+  color: #fff;
+}
+/* #eff4f5 
+#090979
+#020024
+#8BA7AF 45%,
+*/
+
+.main-temp {
+  font-size: 50px;
+  font-weight: 600;
+}
+
+.degree {
+  font-size: 25px;
+  font-weight: 600;
+}
+
+.spacing {
+  letter-spacing: 3px;
+}
+.link {
+  text-decoration: none;
+  color: #fff;
+  font-size: 25px;
+}
+
+#weather-type {
+  font-size: 20px;
+  padding-bottom: 10px;
+}
+
+.conditions {
+  font-size: 13px;
+}
+
+.vertical-bar {
+  font-size: 25px;
+  font-weight: 200;
+}
+
+.center-icon {
+  width: 20%;
+}
+
+img.rot {
+  animation: 16s linear 0s normal none infinite running rot;
+  -webkit-animation: 16s linear 0s normal none infinite running rot;
+  width: 100px;
+}
+@keyframes rot {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@-webkit-keyframes rot {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.main-city {
+  font-size: 40px;
+}
+
+/* Bottom Part */
+
+.bottom-item {
+  color: #09127f;
+}
+
+.cities {
+  font-weight: 600;
+}
+
+.line-vertical {
+  border-right: 2px solid #09127f;
+  margin: 10px 0;
+}
+
+.day {
+  font-weight: 600;
+}
+
+.icon {
+  width: 40%;
+}
+
+.temp {
+  font-size: 17px;
+  font-weight: 500;
+}
