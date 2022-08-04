@@ -88,7 +88,7 @@ function currentLocation(position) {
   axios.get(apiUrl).then(showTemp);
 }
 
-let celsiusTemp = 0;
+let celsiusTemp = 27;
 
 function showTemp(response) {
   document.querySelector("#city").innerHTML = response.data.name;
