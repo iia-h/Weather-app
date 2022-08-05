@@ -8,10 +8,6 @@ body {
 
 /* Top Part */
 
-/* div {
-   border: 1px solid black;
-} */
-
 .container-main {
   margin: 8% auto;
   max-width: 45%;
@@ -27,11 +23,6 @@ body {
   );
   color: #fff;
 }
-/* #eff4f5 
-#090979
-#020024
-#8BA7AF 45%,
-*/
 
 .main-temp {
   font-size: 50px;
@@ -71,8 +62,8 @@ body {
 }
 
 img.rot {
-  animation: 16s linear 0s normal none infinite running rot;
-  -webkit-animation: 16s linear 0s normal none infinite running rot;
+  animation: 30s linear 0s normal none infinite running rot;
+  -webkit-animation: 30s linear 0s normal none infinite running rot;
   width: 100px;
 }
 @keyframes rot {
@@ -122,4 +113,10 @@ img.rot {
 .temp {
   font-size: 17px;
   font-weight: 500;
+}
+
+.source-link {
+  text-decoration: none;
+  color: #09127f;
+  font-weight: 600;
 }
