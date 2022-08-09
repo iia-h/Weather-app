@@ -5,16 +5,16 @@
    <meta charset="UTF-8" />
    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-   <link rel="stylesheet" href="src/styles.css" />
    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
-      integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous" />
+   integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous" />
    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css" />
    <link rel="preconnect" href="https://fonts.googleapis.com" />
    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
    <link
-      href="https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&display=swap"
-      rel="stylesheet" />
+   href="https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&display=swap"
+   rel="stylesheet" />
    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+   <link rel="stylesheet" href="src/styles.css" />
    <title>Weather app</title>
 </head>
 
@@ -22,15 +22,15 @@
    <div class="container-main d-flex flex-column">
       <div class="top-item shadow-lg rounded-3 p-3 d-flex flex-row align-items-center justify-content-around">
          <div>
-            <div class="degree d-flex flex-row align-items-baseline">
+            <div class="d-flex flex-row align-items-baseline">
                <div class="main-temp" id="temp">
                   27
                </div>
                <span class="main-temp">°</span>
-               <div class="d-flex flex-row spacing">
-                  <a href="#" id="celsius" class="link">C</a>
-                  <span class="vertical-bar">|</span>
-                  <a href="#" id="fahrenheit" class="link">F</a>
+               <div class="d-flex flex-row units">
+                  <a href="#" id="celsius">C</a>
+                  <span>|</span>
+                  <a href="#" id="fahrenheit">F</a>
                </div>
             </div>
             <div id="weather-type">sunny</div>
@@ -39,7 +39,6 @@
                   <span>humidity</span> <br>
                   <span id="humidity">25%</span>
                </div>
-               <div class="vertical-bar">|</div>
                <div class="wind">
                   <span>wind</span> <br>
                   <span id="wind">2km/h</span>
@@ -56,11 +55,11 @@
       <div class="bottom-item shadow-lg rounded-3 px-4 py-2">
          <div class="row">
             <div class="col-2">
-               <div class="cities line-vertical">
-                  <div>Kyiv</div>
-                  <div>Paris</div>
-                  <div>Tokio</div>
-               </div>
+               <ul class="cities line-vertical">
+                  <li>Kyiv</li>
+                  <li>Paris</li>
+                  <li>Tokio</li>
+               </ul>
             </div>
             <div class="col-10">
                <div class="row text-center">
