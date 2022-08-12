@@ -10,7 +10,7 @@ body {
 
 .container-main {
   margin: 8% auto;
-  max-width: 45%;
+  max-width: 600px;
   font-family: "Titillium Web", sans-serif;
 }
 
@@ -29,18 +29,27 @@ body {
   font-weight: 600;
 }
 
-.degree {
+.units {
+  letter-spacing: 3px;
   font-size: 25px;
   font-weight: 600;
 }
 
-.spacing {
-  letter-spacing: 3px;
-}
-.link {
+.units a {
   text-decoration: none;
   color: #fff;
+}
+
+.units a:hover {
+  color: #070f64;
+  font-weight: 700;
+}
+
+.units span {
+  position: relative;
   font-size: 25px;
+  font-weight: 200;
+  top: -2px;
 }
 
 #weather-type {
@@ -52,35 +61,16 @@ body {
   font-size: 13px;
 }
 
-.vertical-bar {
-  font-size: 25px;
-  font-weight: 200;
+.conditions span:nth-child(3) {
+   font-weight: 550;
+}
+.humidity {
+  border-right: 1.5px solid #fff;
+  padding-right: 19px;
 }
 
-.center-icon {
-  width: 20%;
-}
-
-img.rot {
-  animation: 30s linear 0s normal none infinite running rot;
-  -webkit-animation: 30s linear 0s normal none infinite running rot;
-  width: 100px;
-}
-@keyframes rot {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
-@-webkit-keyframes rot {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
+.center-icon{
+   width: 20%;
 }
 
 .main-city {
@@ -95,6 +85,8 @@ img.rot {
 
 .cities {
   font-weight: 600;
+  list-style-type: none;
+  padding-left: 0;
 }
 
 .line-vertical {
