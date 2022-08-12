@@ -91,7 +91,7 @@ function currentLocation(position) {
 let celsiusTemp = document.querySelector("#temp").innerHTML;
 
 function showTemp(response) {
-   console.log(response.data);
+  console.log(response.data);
   document.querySelector("#city").innerHTML = response.data.name;
   document.querySelector("#temp").innerHTML = Math.round(
     response.data.main.temp
@@ -108,9 +108,9 @@ function showTemp(response) {
   let iconElement = document.querySelector("#icon");
   iconElement.setAttribute(
     "src",
-    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
-   );
-   iconElement.setAttribute("alt", message);
+    `images//${response.data.weather[0].icon}.png`
+  );
+  iconElement.setAttribute("alt", message);
 }
 
 let currentBtn = document.querySelector("#current-btn");
@@ -136,3 +136,4 @@ fahrenheit.addEventListener("click", clickFahrenheit);
 
 let celsius = document.querySelector("#celsius");
 celsius.addEventListener("click", clickCelsius);
+
