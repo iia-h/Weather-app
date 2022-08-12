@@ -88,8 +88,6 @@ function currentLocation(position) {
   axios.get(apiUrl).then(showTemp);
 }
 
-let celsiusTemp = document.querySelector("#temp").innerHTML;
-
 function showTemp(response) {
   let cityElement = document.querySelector("#city");
   let temperatureElement = document.querySelector("#temp");
@@ -118,16 +116,23 @@ currentBtn.addEventListener("click", searchLocation);
 
 function showFahrenheit(event) {
   event.preventDefault();
-  let fahrenheitTemp = Math.round((celsiusTemp * 9) / 5 + 32);
   let tempElement = document.querySelector("#temp");
+
+  celsius.classList.remove("active");
+  fahrenheit.classList.add("active");
+  let fahrenheitTemp = Math.round((celsiusTemp * 9) / 5 + 32);
   tempElement.innerHTML = fahrenheitTemp;
 }
 
 function showCelsius(event) {
   event.preventDefault();
-  let tempElement = document.querySelector("#temp");
+   let tempElement = document.querySelector("#temp");
+   celsius.classList.add("active");
+   fahrenheit.classList.remove("active");
   tempElement.innerHTML = Math.round(celsiusTemp);
 }
+
+let celsiusTemp = document.querySelector("#temp").innerHTML;
 
 let fahrenheit = document.querySelector("#fahrenheit");
 fahrenheit.addEventListener("click", showFahrenheit);
