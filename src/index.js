@@ -31,7 +31,7 @@ function formatDay() {
   let week = [
     "Sunday",
     "Monday",
-    "Thursday",
+    "Tuesday",
     "Wednesday",
     "Thursday",
     "Friday",
@@ -151,26 +151,41 @@ function getForecast(coordinates) {
   axios.get(apiUrl).then(displayForecast);
 }
 
-function displayForecast() {
+function formatWeek(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let day = date.getDay();
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  return days[day];
+}
+
+function displayForecast(response) {
+  let forecast = response.data.daily;
   let forecastElement = document.querySelector("#forecast");
-  let days = ["MON", "TUE", "WED", "THU", "FRI", "SAT"];
   let forecastHTML = `<div class="row text-center">`;
-  days.forEach(function (day) {
-    forecastHTML =
-      forecastHTML +
-      `
+  forecast.forEach(function (forecastDay, index) {
+    if (index < 6) {
+      forecastHTML =
+        forecastHTML +
+        `
           <div class="col-2 pt-2 pb-2">
-             <div class="weather-forecast-day">${day}</div>
-             <img src="images/01d.png" class="weather-icon" />
+             <div class="weather-forecast-day">${formatWeek(
+               forecastDay.dt
+             )}</div>
+             <img src="images/${
+               forecastDay.weather[0].icon
+             }.png" class="weather-icon" />
              <div class="weather-forecast-temperatures">
-                <span class="weather-forecast-temperature-max">30°</span> 
-                <span class="weather-forecast-temperature-min">27°</span>
+                <span class="weather-forecast-temperature-max">${Math.round(
+                  forecastDay.temp.max
+                )}</span> 
+                <span class="weather-forecast-temperature-min">${Math.round(
+                  forecastDay.temp.min
+                )}</span>
              </div>
           </div>
-       `;
+        `;
+    }
   });
-
   forecastHTML = forecastHTML + `</div>`;
   forecastElement.innerHTML = forecastHTML;
 }
-
