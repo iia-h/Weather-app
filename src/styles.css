@@ -41,9 +41,9 @@ body {
 }
 
 .units .active {
-  color: rgba(255, 255, 255, 0.432);;
+  color: rgba(255, 255, 255, 0.432);
   cursor: default;
-   text-decoration: none;
+  text-decoration: none;
 }
 
 .units span {
@@ -88,6 +88,12 @@ body {
   font-weight: 600;
   list-style-type: none;
   padding-left: 0;
+  cursor: pointer;
+}
+
+li:hover {
+  color: #efcc00;
+  font-weight: 700;
 }
 
 .line-vertical {
@@ -95,8 +101,8 @@ body {
   margin: 10px 0;
 }
 
-.search-form{
-   padding-top: 10px;
+.search-form {
+  padding-top: 10px;
 }
 .weather-forecast-day {
   font-weight: 600;
@@ -104,7 +110,7 @@ body {
 
 .weather-icon {
   width: 30px;
-  line-height:4;
+  line-height: 4;
 }
 
 .weather-forecast-temperatures {
@@ -112,8 +118,8 @@ body {
   font-weight: 600;
 }
 
-.weather-forecast-temperature-min{
-   opacity: 0.8;
+.weather-forecast-temperature-min {
+  opacity: 0.8;
 }
 
 .source-link {

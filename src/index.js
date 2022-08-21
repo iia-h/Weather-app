@@ -17,9 +17,7 @@ function formatDate(date) {
   ];
   let month = months[date.getMonth()];
   let number = date.getDate();
-
   let year = date.getFullYear();
-
   let result = `${month} ${number}, ${year}`;
   return result;
 }
@@ -49,34 +47,15 @@ function formatDay() {
   if (minutes < 10) {
     minutes = `0${minutes}`;
   }
+  let result = `Last updated: ${day} | ${hours}:${minutes}`;
 
-  let result = `${day}, ${hours}:${minutes}`;
   return result;
 }
-//Time format: 12-hour period AM/PM
-function getTimeNow() {
-  let now = new Date();
-  let hour = String(now.getHours()).padStart(2, "0");
-  let minutes = String(now.getMinutes()).padStart(2, "0");
-  let seconds = String(now.getSeconds()).padStart(2, "0");
-  let meridiem = "";
-
-  let time = `${hour}:${minutes}:${seconds}${meridiem}`;
-  timeNow.innerHTML = `${time}`;
-
-  //Performs function for a 'live clock'
-  let t = setTimeout(function () {
-    getTimeNow();
-  }, 1000);
-}
-//Display user's local time
-let timeNow = document.querySelector("#time");
-getTimeNow();
-//____________
 
 let day = document.querySelector("#day");
 day.innerHTML = formatDay();
 
+formatDay();
 // Change location
 
 function searchCity(city) {
@@ -84,6 +63,7 @@ function searchCity(city) {
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}`;
   axios.get(apiUrl).then(showTemp);
 }
+searchCity("Dnipro");
 
 function handleSubmit(event) {
   event.preventDefault();
@@ -235,5 +215,40 @@ function displayForecast(response) {
   forecastHTML = forecastHTML + `</div>`;
   forecastElement.innerHTML = forecastHTML;
 }
+// Popular cities
 
-searchCity("Dnipro");
+function searchKyiv() {
+  let kyivCity = document.querySelector("#kyiv");
+  kyivCity.innerHTML = "Kyiv";
+
+  let apiKey = "ca3de197620a1521a455c4239b865368";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=Kyiv&units=metric&appid=${apiKey}`;
+
+  axios.get(apiUrl).then(showTemp);
+}
+let kyiv = document.querySelector("#kyiv");
+kyiv.addEventListener("click", searchKyiv);
+
+function searchParis() {
+  let parisCity = document.querySelector("#paris");
+  parisCity.innerHTML = "Paris";
+
+  let apiKey = "ca3de197620a1521a455c4239b865368";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=Paris&units=metric&appid=${apiKey}`;
+
+  axios.get(apiUrl).then(showTemp);
+}
+let paris = document.querySelector("#paris");
+paris.addEventListener("click", searchParis);
+
+function searchMadrid() {
+  let madridCity = document.querySelector("#madrid");
+  madridCity.innerHTML = "Madrid";
+
+  let apiKey = "ca3de197620a1521a455c4239b865368";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=Madrid&units=metric&appid=${apiKey}`;
+
+  axios.get(apiUrl).then(showTemp);
+}
+let madrid = document.querySelector("#madrid");
+madrid.addEventListener("click", searchMadrid);
