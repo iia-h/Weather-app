@@ -104,9 +104,9 @@ function showTemp(response) {
   descriptionElement.innerHTML = response.data.weather[0].main;
   iconElement.setAttribute(
     "src",
-    `images//${response.data.weather[0].icon}.png`
+    `images/${response.data.weather[0].icon}.png`
   );
-  iconElement.setAttribute("alt", message);
+  iconElement.setAttribute("alt", "message");
 
   getForecast(response.data.coord);
 }
@@ -145,7 +145,6 @@ celsius.addEventListener("click", showCelsius);
 // Forecast section
 
 function getForecast(coordinates) {
-  console.log(coordinates);
   let apiKey = "ca3de197620a1521a455c4239b865368";
   let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
   axios.get(apiUrl).then(displayForecast);
@@ -177,10 +176,10 @@ function displayForecast(response) {
              <div class="weather-forecast-temperatures">
                 <span class="weather-forecast-temperature-max">${Math.round(
                   forecastDay.temp.max
-                )}</span> 
+                )}°</span> 
                 <span class="weather-forecast-temperature-min">${Math.round(
                   forecastDay.temp.min
-                )}</span>
+                )}°</span>
              </div>
           </div>
         `;
@@ -189,3 +188,6 @@ function displayForecast(response) {
   forecastHTML = forecastHTML + `</div>`;
   forecastElement.innerHTML = forecastHTML;
 }
+
+
+searchCity("Dnipro");
