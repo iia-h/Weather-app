@@ -126,9 +126,9 @@ function showFahrenheit(event) {
 
 function showCelsius(event) {
   event.preventDefault();
-   let tempElement = document.querySelector("#temp");
-   celsius.classList.add("active");
-   fahrenheit.classList.remove("active");
+  let tempElement = document.querySelector("#temp");
+  celsius.classList.add("active");
+  fahrenheit.classList.remove("active");
   tempElement.innerHTML = Math.round(celsiusTemp);
 }
 
@@ -139,3 +139,30 @@ fahrenheit.addEventListener("click", showFahrenheit);
 
 let celsius = document.querySelector("#celsius");
 celsius.addEventListener("click", showCelsius);
+
+// Forecast section
+
+function displayForecast() {
+  let forecastElement = document.querySelector("#forecast");
+  let days = ["MON", "TUE", "WED", "THU", "FRI", "SAT"];
+  let forecastHTML = `<div class="row text-center">`;
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `
+          <div class="col-2 pt-2 pb-2">
+             <div class="weather-forecast-day">${day}</div>
+             <img src="images/01d.png" class="weather-icon" />
+             <div class="weather-forecast-temperatures">
+                <span class="weather-forecast-temperature-max">30°</span> 
+                <span class="weather-forecast-temperature-min">27°</span>
+             </div>
+          </div>
+       `;
+  });
+
+  forecastHTML = forecastHTML + `</div>`;
+  forecastElement.innerHTML = forecastHTML;
+}
+
+displayForecast();
