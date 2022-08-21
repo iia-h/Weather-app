@@ -95,17 +95,21 @@ body {
   margin: 10px 0;
 }
 
-.day {
+.weather-forecast-day {
   font-weight: 600;
 }
 
-.icon {
-  width: 40%;
+.weather-icon {
+  width: 30px;
 }
 
-.temp {
-  font-size: 17px;
-  font-weight: 500;
+.weather-forecast-temperatures {
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.weather-forecast-temperature-min{
+   opacity: 0.8;
 }
 
 .source-link {
