@@ -107,6 +107,8 @@ function showTemp(response) {
     `images//${response.data.weather[0].icon}.png`
   );
   iconElement.setAttribute("alt", message);
+
+  getForecast(response.data.coord);
 }
 
 let currentBtn = document.querySelector("#current-btn");
@@ -142,6 +144,13 @@ celsius.addEventListener("click", showCelsius);
 
 // Forecast section
 
+function getForecast(coordinates) {
+  console.log(coordinates);
+  let apiKey = "ca3de197620a1521a455c4239b865368";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(displayForecast);
+}
+
 function displayForecast() {
   let forecastElement = document.querySelector("#forecast");
   let days = ["MON", "TUE", "WED", "THU", "FRI", "SAT"];
@@ -165,4 +174,3 @@ function displayForecast() {
   forecastElement.innerHTML = forecastHTML;
 }
 
-displayForecast();
