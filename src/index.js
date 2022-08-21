@@ -18,7 +18,9 @@ function formatDate(date) {
   let month = months[date.getMonth()];
   let number = date.getDate();
 
-  let result = `${month}, ${number}`;
+  let year = date.getFullYear();
+
+  let result = `${month} ${number}, ${year}`;
   return result;
 }
 
@@ -51,6 +53,26 @@ function formatDay() {
   let result = `${day}, ${hours}:${minutes}`;
   return result;
 }
+//Time format: 12-hour period AM/PM
+function getTimeNow() {
+  let now = new Date();
+  let hour = String(now.getHours()).padStart(2, "0");
+  let minutes = String(now.getMinutes()).padStart(2, "0");
+  let seconds = String(now.getSeconds()).padStart(2, "0");
+  let meridiem = "";
+
+  let time = `${hour}:${minutes}:${seconds}${meridiem}`;
+  timeNow.innerHTML = `${time}`;
+
+  //Performs function for a 'live clock'
+  let t = setTimeout(function () {
+    getTimeNow();
+  }, 1000);
+}
+//Display user's local time
+let timeNow = document.querySelector("#time");
+getTimeNow();
+//____________
 
 let day = document.querySelector("#day");
 day.innerHTML = formatDay();
@@ -119,11 +141,23 @@ currentBtn.addEventListener("click", searchLocation);
 function showFahrenheit(event) {
   event.preventDefault();
   let tempElement = document.querySelector("#temp");
-
   celsius.classList.remove("active");
   fahrenheit.classList.add("active");
   let fahrenheitTemp = Math.round((celsiusTemp * 9) / 5 + 32);
   tempElement.innerHTML = fahrenheitTemp;
+
+  if (isCelsius) {
+    let temperature = document.querySelectorAll(
+      ".weather-forecast-temperature"
+    );
+    for (let i = 0; i < temperature.length; i++) {
+      let temperatureFahrenheit =
+        (parseInt(temperature[i].innerText) * 9) / 5 + 32;
+      temperature[i].innerHTML = `${Math.round(temperatureFahrenheit)}°`;
+    }
+
+    isCelsius = !isCelsius;
+  }
 }
 
 function showCelsius(event) {
@@ -132,9 +166,22 @@ function showCelsius(event) {
   celsius.classList.add("active");
   fahrenheit.classList.remove("active");
   tempElement.innerHTML = Math.round(celsiusTemp);
+
+  if (!isCelsius) {
+    let temperature = document.querySelectorAll(
+      ".weather-forecast-temperature"
+    );
+    for (let i = 0; i < temperature.length; i++) {
+      let temperatureCelsius =
+        ((parseInt(temperature[i].innerText) - 32) * 5) / 9;
+      temperature[i].innerHTML = `${Math.round(temperatureCelsius)}°`;
+    }
+    isCelsius = !isCelsius;
+  }
 }
 
 let celsiusTemp = document.querySelector("#temp").innerHTML;
+let isCelsius = true;
 
 let fahrenheit = document.querySelector("#fahrenheit");
 fahrenheit.addEventListener("click", showFahrenheit);
@@ -162,11 +209,11 @@ function displayForecast(response) {
   let forecastElement = document.querySelector("#forecast");
   let forecastHTML = `<div class="row text-center">`;
   forecast.forEach(function (forecastDay, index) {
-    if (index < 6) {
+    if ((index < 7) & (index > 0)) {
       forecastHTML =
         forecastHTML +
         `
-          <div class="col-2 pt-2 pb-2">
+          <div class="col-2 pt-2">
              <div class="weather-forecast-day">${formatWeek(
                forecastDay.dt
              )}</div>
@@ -174,10 +221,10 @@ function displayForecast(response) {
                forecastDay.weather[0].icon
              }.png" class="weather-icon" />
              <div class="weather-forecast-temperatures">
-                <span class="weather-forecast-temperature-max">${Math.round(
+                <span class="weather-forecast-temperature weather-forecast-temperature-max">${Math.round(
                   forecastDay.temp.max
                 )}°</span> 
-                <span class="weather-forecast-temperature-min">${Math.round(
+                <span class="weather-forecast-temperature weather-forecast-temperature-min">${Math.round(
                   forecastDay.temp.min
                 )}°</span>
              </div>
@@ -188,6 +235,5 @@ function displayForecast(response) {
   forecastHTML = forecastHTML + `</div>`;
   forecastElement.innerHTML = forecastHTML;
 }
-
 
 searchCity("Dnipro");
